@@ -1,6 +1,6 @@
 {
   "name": "freeman-browser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Stealth browser for AI agents. iPhone 15 Pro fingerprint. Drop-in Playwright replacement.",
   "main": "scripts/browser-freeman.js",
   "keywords": [
