@@ -1,5 +1,5 @@
 {
-  "name": "human-browser",
+  "name": "freeman-browser",
   "version": "4.0.0",
   "description": "Stealth browser for AI agents. Bypasses Cloudflare, DataDome, PerimeterX. iPhone 15 Pro fingerprint. Drop-in Playwright replacement.",
   "keywords": [
@@ -10,7 +10,7 @@
     "anti-bot",
     "scraping",
     "ai-agent",
-    "human-browser",
+    "freeman-browser",
     "instagram-scraping",
     "web-scraping",
     "agent-skill",
@@ -28,10 +28,10 @@
   ],
   "author": "al1enjesus",
   "license": "MIT",
-  "homepage": "https://github.com/sbrin/human-browser",
+  "homepage": "https://github.com/sbrin/freeman-browser",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sbrin/human-browser"
+    "url": "https://github.com/sbrin/freeman-browser"
   },
   "files": [
     "SKILL.md",

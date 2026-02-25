@@ -1,11 +1,11 @@
 /**
- * browser-human.js — Human Browser for AI Agents
+ * browser-freeman.js — Freeman Browser for AI Agents
  *
  * Stealth browser. Appears as iPhone 15 Pro or Desktop Chrome to every website.
  *
  * Usage:
- *   const { launchHuman } = require('./browser-human');
- *   const { browser, page } = await launchHuman({ mobile: true });
+ *   const { launchFreeman } = require('./browser-freeman');
+ *   const { browser, page } = await launchFreeman({ mobile: true });
  */
 
 const fs = require('fs');
@@ -16,6 +16,7 @@ const path = require('path');
 function _requirePlaywright() {
   const tries = [
     () => require('playwright'),
+    () => require(path.resolve(process.cwd(), 'node_modules/playwright')),
     () => require(`${__dirname}/../node_modules/playwright`),
     () => require(`${__dirname}/../../node_modules/playwright`),
     () => require(`${process.env.HOME || '/root'}/.openclaw/workspace/node_modules/playwright`),
@@ -25,7 +26,7 @@ function _requirePlaywright() {
     try { return fn(); } catch (_) {}
   }
   throw new Error(
-    '[human-browser] playwright not found.\n' +
+    '[freeman-browser] playwright not found.\n' +
     'Run: npm install playwright && npx playwright install chromium'
   );
 }
@@ -41,7 +42,7 @@ try {
     userConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   }
 } catch (e) {
-  console.warn('[human-browser] Could not load browser.json:', e.message);
+  console.warn('[freeman-browser] Could not load browser.json:', e.message);
 }
 
 // ─── DEVICE PROFILES ─────────────────────────────────────────────────────────
@@ -240,7 +241,7 @@ async function solveCaptcha(page, opts = {}) {
 
 // ─── LAUNCH ───────────────────────────────────────────────────────────────────
 
-async function launchHuman(opts = {}) {
+async function launchFreeman(opts = {}) {
   const {
     mobile   = true,
     headless = true,
@@ -372,7 +373,7 @@ async function pasteIntoEditor(page, editorSelector, text) {
 // ─── EXPORTS ──────────────────────────────────────────────────────────────────
 
 module.exports = {
-  launchHuman,
+  launchFreeman,
   humanClick, humanMouseMove, humanType, humanScroll, humanRead,
   solveCaptcha,
   shadowQuery, shadowFill, shadowClickButton, dumpInteractiveElements,
@@ -383,9 +384,9 @@ module.exports = {
 
 // ─── QUICK TEST ───────────────────────────────────────────────────────────────
 if (require.main === module) {
-  console.log(`🧪 Testing Human Browser`);
+  console.log(`🧪 Testing Freeman Browser`);
   (async () => {
-    const { browser, page } = await launchHuman({ mobile: true });
+    const { browser, page } = await launchFreeman({ mobile: true });
     await page.goto('https://ipinfo.io/json', { waitUntil: 'domcontentloaded', timeout: 30000 });
     const info = JSON.parse(await page.textContent('body'));
     console.log(`✅ IP:      ${info.ip}`);
@@ -395,6 +396,6 @@ if (require.main === module) {
     const ua = await page.evaluate(() => navigator.userAgent);
     console.log(`✅ UA:      ${ua.slice(0, 80)}...`);
     await browser.close();
-    console.log('\n🎉 Human Browser is ready.');
+    console.log('\n🎉 Freeman Browser is ready.');
   })().catch(console.error);
 }

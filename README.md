@@ -1,4 +1,4 @@
-# Human Browser — Web Stealth Browser for AI Agents
+# Freeman Browser — Web Stealth Browser for AI Agents
 
 > **Stealth engine for your bot. Bypasses Cloudflare, DataDome, PerimeterX.**
 
@@ -11,9 +11,9 @@ Regular Playwright gets blocked **immediately** by:
 - DataDome (fingerprint analysis)
 - PerimeterX (behavioral analysis)
 
-Human Browser solves this by combining:
+Freeman Browser solves this by combining:
 1. **Real device fingerprint** — iPhone 15 Pro or Windows Chrome, complete with canvas, WebGL, fonts
-2. **Human-like behavior** — Bezier mouse curves, 60–220ms typing, natural scroll with jitter
+2. **Freeman-like behavior** — Bezier mouse curves, 60–220ms typing, natural scroll with jitter
 3. **Full anti-detection** — `webdriver=false`, no automation flags
 
 ---
@@ -21,12 +21,12 @@ Human Browser solves this by combining:
 ## Quick Start
 
 ```js
-const { launchHuman } = require('./scripts/browser-human');
+const { launchFreeman } = require('./scripts/browser-freeman');
 
-const { browser, page, humanType, humanClick, humanScroll, sleep } = await launchHuman();
+const { browser, page, humanType, humanClick, humanScroll, sleep } = await launchFreeman();
 
 // Desktop Chrome (Windows fingerprint)
-const { page: desktopPage } = await launchHuman({ mobile: false });
+const { page: desktopPage } = await launchFreeman({ mobile: false });
 
 await page.goto('https://example.com', { waitUntil: 'domcontentloaded' });
 await humanScroll(page, 'down');
@@ -68,7 +68,7 @@ You can configure the browser's fingerprint (locale, timezone, and geolocation) 
 
 ## How it compares
 
-| Feature | Regular Playwright | Human Browser |
+| Feature | Regular Playwright | Freeman Browser |
 |---------|-------------------|---------------|
 | Bot detection | Fails | Passes all |
 | Mouse movement | Instant teleport | Bezier curves |
