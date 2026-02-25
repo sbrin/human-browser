@@ -35,11 +35,25 @@ const { browser, page } = await launchHuman({ mobile: false });
 ### Default fingerprint (what sites see)
 - **Device:** iPhone 15 Pro, iOS 17.4.1, Safari
 - **Viewport:** 393×852, deviceScaleFactor=3
-- **Timezone:** America/New_York
+- **Timezone:** America/New_York (configurable via `browser.json`)
 - **Touch:** 5 points, real touch events
 - **webdriver:** `false`
 - **Mouse:** Bezier curve paths, not straight lines
 - **Typing:** 60–220ms/char + random pauses
+
+You can customize the timezone, locale, and geolocation by creating a `browser.json` file in your working directory:
+
+```json
+{
+  "locale": "en-US",
+  "timezoneId": "America/New_York",
+  "geolocation": {
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "accuracy": 50
+  }
+}
+```
 
 ---
 

@@ -8,6 +8,9 @@
  *   const { browser, page } = await launchHuman({ mobile: true });
  */
 
+const fs = require('fs');
+const path = require('path');
+
 // ─── PLAYWRIGHT RESOLVER ──────────────────────────────────────────────────────
 
 function _requirePlaywright() {
@@ -29,9 +32,26 @@ function _requirePlaywright() {
 
 const { chromium } = _requirePlaywright();
 
+// ─── CONFIGURATION ───────────────────────────────────────────────────────────
+
+let userConfig = {};
+try {
+  const configPath = path.resolve(process.cwd(), process.env.BROWSER_CONFIG || 'browser.json');
+  if (fs.existsSync(configPath)) {
+    userConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+  }
+} catch (e) {
+  console.warn('[human-browser] Could not load browser.json:', e.message);
+}
+
 // ─── DEVICE PROFILES ─────────────────────────────────────────────────────────
 
 function buildDevice(mobile) {
+  const locale = userConfig.locale || 'en-US';
+  const timezoneId = userConfig.timezoneId || 'America/New_York';
+  const geolocation = userConfig.geolocation || { latitude: 40.7128, longitude: -74.006, accuracy: 50 };
+  const acceptLanguage = locale + (locale === 'en-US' ? ',en;q=0.9' : ',en-US;q=0.9,en;q=0.8');
+
   if (mobile) {
     return {
       userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Mobile/15E148 Safari/604.1',
@@ -39,12 +59,12 @@ function buildDevice(mobile) {
       deviceScaleFactor: 3,
       isMobile: true,
       hasTouch: true,
-      locale: 'en-US',
-      timezoneId: 'America/New_York',
-      geolocation: { latitude: 40.7128, longitude: -74.006, accuracy: 50 },
+      locale,
+      timezoneId,
+      geolocation,
       colorScheme: 'light',
       extraHTTPHeaders: {
-        'Accept-Language': 'en-US,en;q=0.9',
+        'Accept-Language': acceptLanguage,
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br',
         'sec-fetch-dest': 'document',
@@ -57,12 +77,12 @@ function buildDevice(mobile) {
   return {
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
     viewport: { width: 1440, height: 900 },
-    locale: 'en-US',
-    timezoneId: 'America/New_York',
-    geolocation: { latitude: 40.7128, longitude: -74.006, accuracy: 50 },
+    locale,
+    timezoneId,
+    geolocation,
     colorScheme: 'light',
     extraHTTPHeaders: {
-      'Accept-Language': 'en-US,en;q=0.9',
+      'Accept-Language': acceptLanguage,
       'sec-ch-ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
       'sec-ch-ua-mobile': '?0',
       'sec-ch-ua-platform': '"Windows"',

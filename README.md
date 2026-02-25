@@ -46,6 +46,26 @@ npx playwright install chromium --with-deps
 
 ---
 
+## Configuration
+
+You can configure the browser's fingerprint (locale, timezone, and geolocation) by creating a `browser.json` file in the root of your project:
+
+```json
+{
+  "locale": "en-US",
+  "timezoneId": "America/New_York",
+  "geolocation": {
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "accuracy": 50
+  }
+}
+```
+
+*(Alternatively, you can specify a custom config path via the `BROWSER_CONFIG` environment variable.)*
+
+---
+
 ## How it compares
 
 | Feature | Regular Playwright | Human Browser |
