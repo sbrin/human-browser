@@ -1,6 +1,6 @@
 # Freeman Browser — Web Stealth Browser for AI Agents
 
-> **Stealth engine for your bot. Bypasses Cloudflare, DataDome, PerimeterX.**
+> **Stealth engine for your OpenClaw**
 
 ---
 
@@ -21,7 +21,7 @@ Freeman Browser solves this by combining:
 ## Quick Start
 
 ```js
-const { launchFreeman } = require('./scripts/browser-freeman');
+const { launchFreeman } = require('freeman-browser');
 
 const { browser, page, humanType, humanClick, humanScroll, sleep } = await launchFreeman();
 
@@ -39,8 +39,16 @@ await browser.close();
 
 ## Setup
 
+### As an OpenClaw Skill
+
 ```bash
-npm install playwright
+clawhub install sbrin/freeman-browser
+```
+
+### As a standalone NPM package
+
+```bash
+npm install freeman-browser playwright
 npx playwright install chromium --with-deps
 ```
 
@@ -77,3 +85,6 @@ You can configure the browser's fingerprint (locale, timezone, and geolocation) 
 | Cloudflare | Blocked | Bypassed |
 | DataDome | Blocked | Bypassed |
 
+## Credits
+
+Based on the [human-browser](https://github.com/al1enjesus/human-browser) by [al1enjesus](https://github.com/al1enjesus).

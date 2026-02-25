@@ -16,11 +16,10 @@ const path = require('path');
 function _requirePlaywright() {
   const tries = [
     () => require('playwright'),
-    () => require(path.resolve(process.cwd(), 'node_modules/playwright')),
-    () => require(`${__dirname}/../node_modules/playwright`),
-    () => require(`${__dirname}/../../node_modules/playwright`),
-    () => require(`${process.env.HOME || '/root'}/.openclaw/workspace/node_modules/playwright`),
-    () => require('./node_modules/playwright'),
+    () => require(path.resolve(process.cwd(), 'node_modules', 'playwright')),
+    () => require(path.resolve(__dirname, '..', 'node_modules', 'playwright')),
+    () => require(path.resolve(__dirname, '..', '..', 'playwright')),
+    () => require(path.resolve(process.env.HOME || '/root', '.openclaw/workspace/node_modules/playwright'))
   ];
   for (const fn of tries) {
     try { return fn(); } catch (_) {}

@@ -1,7 +1,8 @@
 {
   "name": "freeman-browser",
-  "version": "4.0.0",
-  "description": "Stealth browser for AI agents. Bypasses Cloudflare, DataDome, PerimeterX. iPhone 15 Pro fingerprint. Drop-in Playwright replacement.",
+  "version": "1.0.0",
+  "description": "Stealth browser for AI agents. iPhone 15 Pro fingerprint. Drop-in Playwright replacement.",
+  "main": "scripts/browser-freeman.js",
   "keywords": [
     "browser-automation",
     "stealth-browser",
@@ -26,7 +27,7 @@
     "openclaw-skill",
     "openai-agent"
   ],
-  "author": "al1enjesus",
+  "author": "sbrin",
   "license": "MIT",
   "homepage": "https://github.com/sbrin/freeman-browser",
   "repository": {
