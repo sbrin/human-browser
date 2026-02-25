@@ -1,18 +1,16 @@
 {
   "name": "human-browser",
   "version": "4.0.0",
-  "description": "Stealth browser for AI agents. Bypasses Cloudflare, DataDome, PerimeterX. Residential IPs from 10+ countries. iPhone 15 Pro fingerprint. Drop-in Playwright replacement — launchHuman() just works.",
+  "description": "Stealth browser for AI agents. Bypasses Cloudflare, DataDome, PerimeterX. iPhone 15 Pro fingerprint. Drop-in Playwright replacement.",
   "keywords": [
     "browser-automation",
     "stealth-browser",
-    "residential-proxy",
     "playwright",
     "cloudflare-bypass",
     "anti-bot",
     "scraping",
     "ai-agent",
     "human-browser",
-    "multi-country",
     "instagram-scraping",
     "web-scraping",
     "agent-skill",
@@ -22,7 +20,6 @@
     "fingerprint-spoofing",
     "iphone-fingerprint",
     "headless-detection",
-    "proxy-rotation",
     "agent-browser",
     "playwright-stealth",
     "bot-detection-bypass",
@@ -31,16 +28,15 @@
   ],
   "author": "al1enjesus",
   "license": "MIT",
-  "homepage": "https://humanbrowser.dev",
+  "homepage": "https://github.com/sbrin/human-browser",
   "repository": {
     "type": "git",
-    "url": "https://github.com/al1enjesus/human-browser"
+    "url": "https://github.com/sbrin/human-browser"
   },
   "files": [
     "SKILL.md",
     "README.md",
-    "scripts/",
-    "references/"
+    "scripts/"
   ],
   "peerDependencies": {
     "playwright": "^1.58.2"
